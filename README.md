@@ -4,7 +4,7 @@ A use of sentiment analytics exploiting the vader Sentiment lexicon analyzer and
 
 ## Version 0.1
 ### Goals
-The goal of this project is to get a good stock prediction out of the data provided using a multi-modal (ensemble) approach. The first thoughts are
+The goal of this project is to get a good stock prediction rate out of the data provided using a multi-modal (ensemble) approach. The first thoughts are
 1. Model to get good sentiment predictions
 2. Model that gets the output of the first model as a feature and a time-series deep learning approach on the stock values.
 
