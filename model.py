@@ -33,6 +33,9 @@ class Model():
         print("Accuracy: %.2f%%" % (scores[1]*100))
 
     def saveModel(self, name):
+        path = os.getcwd()
+        os.chdir(path+"\models")
         self.model.save(name+".h5")
+        os.chdir("../")
 
 
