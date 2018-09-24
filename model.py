@@ -9,9 +9,12 @@ from keras.preprocessing import sequence
 from data_prepro import extract_data
 from sklearn.model_selection import train_test_split
 from keras.utils import to_categorical
+from keras.models import load_model
+import tensorflow as tf
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
+sess = tf.Session(config=tf.ConfigProto(log_device_placement=True)) # Tensorflow gpu support
 
 # use the function from the data_prepro file
 labels, news, dates = extract_data()
@@ -34,7 +37,8 @@ model.add(LSTM(100))
 model.add(Dense(3, activation='sigmoid'))
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 print(model.summary())
-model.fit(X_train, y_train, epochs=3, batch_size=64)
+model.fit(X_train, y_train, epochs=1, batch_size=64)
 # Final evaluation of the model
 scores = model.evaluate(X_test, y_test, verbose=0)
 print("Accuracy: %.2f%%" % (scores[1]*100))
+model.save("model_v0.1.h5")
