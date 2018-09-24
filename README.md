@@ -1,7 +1,13 @@
 # Stock_Prediction_Model
 A use of sentiment analytics exploiting the vader Sentiment lexicon analyzer and some Deep learning usage to get inference and stock predictions.
 
+
 ## Version 0.1
+### Goals
+The goal of this project is to get a good stock prediction out of the data provided using a multi-modal (ensemble) approach. The first thoughts are
+1. Model to get good sentiment predictions
+2. Model that gets the output of the first model as a feature and a time-series deep learning approach on the stock values.
+
 ### Requirements
 You can always install the requirements through pip
 1. tensorflow 
