@@ -7,20 +7,20 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 def extract_data():
     data = pd.read_csv("RedditNews.csv") 
 
-    dates = data['Date'].values.tolist()
+    dates = data['Date'].values.tolist()  # drop the values into lists
     news = data['News'].values.tolist() 
 
     for i in range(len(dates)): 
         dates[i] = dates[i].split("-")
     
-    analyzer = SentimentIntensityAnalyzer()
+    analyzer = SentimentIntensityAnalyzer() # init sentiment intensity analyzer
     labels = []
     for new in news:
-        vs = analyzer.polarity_scores(new)
-        labels.append(analyzeCompound(vs['compound']))
+        vs = analyzer.polarity_scores(new) 
+        labels.append(analyzeCompound(vs['compound'])) # analyze every compound for the sentiments
     
-    news_processed, labels_processed = lexicon_labeling_prepro(news, labels)
-    return (labels_processed, news_processed, dates)
+    news_processed, labels_processed = lexicon_labeling_prepro(news, labels) # create the lookup table
+    return (labels_processed, news_processed, dates) 
 
 
 def analyzeCompound(comp):

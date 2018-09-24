@@ -13,9 +13,12 @@ from keras.utils import to_categorical
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
+
+# use the function from the data_prepro file
 labels, news, dates = extract_data()
 print(len(news), len(labels))
 labels = to_categorical(labels, num_classes=3)
+# split our data into a training and a testing set.
 X_train, X_test, y_train, y_test = train_test_split(news, labels, test_size=0.2, random_state=45)
 top_words = 120000
 # truncate and pad input sequences
