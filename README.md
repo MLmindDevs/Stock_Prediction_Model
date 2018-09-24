@@ -24,3 +24,4 @@ You can always install the requirements through pip
 ### model.py
 Simple RNN-CNN model with one embedding layer and a 3 node output that decides the result the labels are transformed into one hot encoded vectors.
 That's an alpha version model hopefully it will begin to grow into a bigger one in the process...
+The current Model is trainable on the data and gets a prediction accuracy of 94% with just 4 epochs.
