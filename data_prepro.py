@@ -23,7 +23,7 @@ def extract_data():
     return (labels_processed, news_processed, dates) 
 
 
-def analyzeCompound(comp):
+def analyzeCompound(comp): # Function to analyze the compound
     if comp>=0.05:
         return 1
     elif comp > -0.05 and comp < 0.05:
@@ -31,7 +31,7 @@ def analyzeCompound(comp):
     else:
         return -1
 
-def lexicon_labeling_prepro(all_news, labels):
+def lexicon_labeling_prepro(all_news, labels): # function for error correction and lookup table transformation
     # Count total words
     word_count = Counter()
     for post in all_news:
