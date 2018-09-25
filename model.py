@@ -33,7 +33,7 @@ class Model():
 
     def saveModel(self, name):
         path = os.getcwd()
-        os.chdir(path+"\models")
+        os.chdir(path+"/models")
         self.model.save(name+".h5")
         os.chdir("../")
 

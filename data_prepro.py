@@ -5,7 +5,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 
 def extract_data():
-    data = pd.read_csv("data\RedditNews.csv") 
+    data = pd.read_csv("data/RedditNews.csv") 
 
     dates = data['Date'].values.tolist()  # drop the values into lists
     news = data['News'].values.tolist() 
