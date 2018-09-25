@@ -15,7 +15,6 @@ class Model():
         self.model = model
 
     def createModel(self, embedding_vector_length, top_words, max_review_length):
-        embedding_vector_length = 32
         self.model.add(Embedding(top_words, embedding_vector_length, input_length=max_review_length))
         self.model.add(Conv1D(filters=32, kernel_size=3, padding='same', activation='relu'))
         self.model.add(MaxPooling1D(pool_size=2))
