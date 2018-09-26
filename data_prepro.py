@@ -3,7 +3,7 @@ from collections import Counter
 import numpy as np
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-#alex is here biaaaaaatches
+#alex is here mofos
 
 def extract_data():
     data = pd.read_csv("data/RedditNews.csv") 
