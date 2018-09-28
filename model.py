@@ -16,15 +16,15 @@ class Model():
 
     def createModel(self, embedding_vector_length, top_words, max_review_length):
         self.model.add(Embedding(top_words, embedding_vector_length, input_length=max_review_length))
-        self.model.add(Conv1D(filters=32, kernel_size=3, padding='same', activation='relu'))
-        self.model.add(MaxPooling1D(pool_size=2))
-        self.model.add(LSTM(100))
+        self.model.add(LSTM(256))
+        self.model.add(LSTM(128, return_sequences=True))
+        self.model.add(LSTM(64, return_sequences=True))
         self.model.add(Dense(3, activation='softmax'))
         self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         print(self.model.summary())
         
     def fit(self, X_train, y_train, X_val, y_val):
-        self.model.fit(X_train, y_train, epochs=4, batch_size=64, validation_data=(X_val, y_val))
+        self.model.fit(X_train, y_train, epochs=2, batch_size=64, validation_data=(X_val, y_val))
 
     def evaluate(self, X_test, y_test):
         # Final evaluation of the model
