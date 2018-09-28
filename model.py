@@ -19,16 +19,17 @@ class Model():
         self.model.add(Conv1D(filters=32, kernel_size=3, padding='same', activation='relu'))
         self.model.add(MaxPooling1D(pool_size=2))
         self.model.add(LSTM(100))
-        self.model.add(Dense(3, activation='sigmoid'))
+        self.model.add(Dense(3, activation='softmax'))
         self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         print(self.model.summary())
         
-    def fit(self, X_train, y_train):
-        self.model.fit(X_train, y_train, epochs=1, batch_size=64)
+    def fit(self, X_train, y_train, X_val, y_val):
+        self.model.fit(X_train, y_train, epochs=4, batch_size=64, validation_data=(X_val, y_val))
 
     def evaluate(self, X_test, y_test):
         # Final evaluation of the model
         scores = self.model.evaluate(X_test, y_test, verbose=0)
+        print(scores)
         print("Accuracy: %.2f%%" % (scores[1]*100))
 
     def saveModel(self, name):
@@ -36,5 +37,8 @@ class Model():
         os.chdir(path+"/models")
         self.model.save(name+".h5")
         os.chdir("../")
+    
+    def loadModel(self, filepath):
+        self.model = load_model(filepath)
 
 

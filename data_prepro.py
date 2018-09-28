@@ -25,11 +25,11 @@ def extract_data():
 
 def analyzeCompound(comp): # Function to analyze the compound
     if comp>=0.05:
-        return 1
+        return 2
     elif comp > -0.05 and comp < 0.05:
-        return 0
+        return 1
     else:
-        return -1
+        return 0
 
 def lexicon_labeling_prepro(all_news, labels): # function for error correction and lookup table transformation
     # Count total words

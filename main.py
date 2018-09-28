@@ -3,7 +3,6 @@ from keras.preprocessing import sequence
 from data_prepro import extract_data
 from sklearn.model_selection import train_test_split
 from keras.utils import to_categorical
-from keras.models import load_model
 import tensorflow as tf
 import os
 from model import Model
@@ -25,6 +24,6 @@ X_test = sequence.pad_sequences(X_test, maxlen=max_review_length)
 
 model = Model() 
 model.createModel(32, top_words, max_review_length)
-model.fit(X_train, y_train)
+model.fit(X_train, y_train, X_test, y_test)
 model.evaluate(X_test, y_test)
 model.saveModel("version1")
