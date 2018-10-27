@@ -17,8 +17,6 @@ class Model():
     def createModel(self, embedding_vector_length, top_words, max_review_length):
         self.model.add(Embedding(top_words, embedding_vector_length, input_length=max_review_length))
         self.model.add(LSTM(256))
-        self.model.add(LSTM(128, return_sequences=True))
-        self.model.add(LSTM(64, return_sequences=True))
         self.model.add(Dense(3, activation='softmax'))
         self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         print(self.model.summary())
